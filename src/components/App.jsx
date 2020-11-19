@@ -13,18 +13,21 @@ function App() {
 
   function handleClick() {
     setClick(name);
+    event.preventDefault();
   }
 
   return (
     <div className="container">
       <h1>Hello {click}</h1>
-      <input
-        onChange={handleChange}
-        type="text"
-        placeholder="What's your name?"
-        value={name}
-      />
-      <button onClick={handleClick}>Submit</button>
+      <form onSubmit={handleClick}>
+        <input
+          onChange={handleChange}
+          type="text"
+          placeholder="What's your name?"
+          value={name}
+        />
+        <button>Submit</button>
+      </form>
     </div>
   );
 }
@@ -38,3 +41,4 @@ export default App;
 // The default behaviour of a button within a form is for it to refresh
 // It triggers a method on the form called onSubmit
 // This means we could move the onClick={handleClick} into the form as onSubmit={handleClick}
+// We can prevent the form automatically refreshing by typing: event.preventDefault();
